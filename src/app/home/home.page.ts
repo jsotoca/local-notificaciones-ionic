@@ -24,15 +24,15 @@ export class HomePage {
     );
   }
 
-  notificar(newItem: any) {
+  notificar(item: any) {
     let options: ScheduleOptions = {
       notifications: [
         {
           id: 1,
-          title: 'Nuevo ítem agregado',
-          body: newItem.body || 'naruto',
-          largeBody: newItem.body || 'Se ha agregado un nuevo ítem a la colección.',
-          summaryText: 'Nuevo ítem', // Texto de resumen (puede variar según las notificaciones del sistema)
+          title: item.title,
+          body: item.body,
+          largeBody: item.largeBody,
+          summaryText: item.summaryText
         }
       ]
     };
@@ -40,25 +40,6 @@ export class HomePage {
       LocalNotifications.schedule(options);
     } catch (error) {
       console.log(error);
-    }
-  }
-
-  mostrarAlerta() {
-    let options: ScheduleOptions = {
-      notifications: [
-        {
-          id: 1,
-          title: 'hola',
-          body: 'hola',
-          largeBody: 'hola',
-          summaryText: 'hola',
-        }
-      ]
-    }
-    try {
-      LocalNotifications.schedule(options)
-    } catch (error) {
-      console.log(error)
     }
   }
 
